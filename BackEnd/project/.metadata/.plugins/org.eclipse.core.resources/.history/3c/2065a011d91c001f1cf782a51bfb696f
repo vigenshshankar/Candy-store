@@ -1,0 +1,10 @@
+package com.cg.onlinesweetmart.service;
+
+import java.util.List;
+
+import com.cg.onlinesweetmart.entity.SweetOrder;
+
+public interface SweetOrderService {
+
+	
+}

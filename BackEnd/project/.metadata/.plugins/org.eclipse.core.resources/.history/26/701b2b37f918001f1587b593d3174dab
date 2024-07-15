@@ -1,0 +1,5 @@
+package com.cg.onlinesweetmart.service.impl;
+
+public class AuthServiceImpl {
+
+}

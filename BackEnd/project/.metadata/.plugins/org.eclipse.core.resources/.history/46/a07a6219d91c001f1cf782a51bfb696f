@@ -1,0 +1,19 @@
+package com.cg.onlinesweetmart.service;
+
+import java.util.List;
+
+import com.cg.onlinesweetmart.entity.SweetOrder;
+
+public interface SweetOrderService {
+
+	/**
+	 * Updates an existing sweet order.
+	 *
+	 * @param sweetOrder The sweet order to be updated.
+	 * @return The updated sweet order.
+	 * @throws OrderNotFoundException If the sweet order to be updated is not found.
+	 */
+	SweetOrder updateSweetOrder(SweetOrder sweetOrder);
+
+	
+}

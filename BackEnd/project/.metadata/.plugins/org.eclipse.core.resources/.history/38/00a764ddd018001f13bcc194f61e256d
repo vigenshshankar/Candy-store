@@ -1,0 +1,72 @@
+package com.cg.onlinesweetmart.service.impl;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.cg.onlinesweetmart.entity.Cart;
+import com.cg.onlinesweetmart.entity.Role;
+import com.cg.onlinesweetmart.entity.User;
+import com.cg.onlinesweetmart.exception.SweetMartAPIException;
+import com.cg.onlinesweetmart.repository.CartRepository;
+import com.cg.onlinesweetmart.repository.RoleRepository;
+import com.cg.onlinesweetmart.repository.UserRepository;
+import com.cg.onlinesweetmart.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Autowired
+	private CartRepository cartRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	private PasswordEncoder passwordEncoder;
+	
+	public String addUser(User user) {
+		
+		if(userRepository.existsByUsername(user.getUsername())) {
+			throw new SweetMartAPIException(HttpStatus.BAD_REQUEST, "Username already exists");
+		}
+		
+		if(userRepository.existsByEmail(user.getEmail())) {
+			throw new SweetMartAPIException(HttpStatus.BAD_REQUEST, "Email already exists");
+		}
+		
+		Cart cart = new Cart();
+		user.setCart(cart);
+		cartRepository.save(cart);
+		Role role = roleRepository.findByName("ROLE_USER");
+		Set<Role> roleSet = new HashSet<>();
+		roleSet.add(role);
+		user.setRoles(roleSet);
+		
+		String password = user.getPassword();
+		user.setPassword(passwordEncoder.encode(password));
+		
+		userRepository.save(user);
+		
+		return "User Registered Successfully";
+	}
+
+	public List<User> showAllUsers() {
+		return userRepository.findAll();
+	}
+
+	public User updateUser(User user) {
+		return userRepository.save(user);
+	}
+
+	public void cancelUser(long userId) {
+		userRepository.deleteById(userId);;
+	}
+}

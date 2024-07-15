@@ -1,0 +1,20 @@
+package com.cg.onlinesweetmart.security;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class JwtTokenProvider {
+
+	@Value("${app.jwt-secter}")
+	private String jwtSecret;
+	
+	@Value("${app.jwt-expiration-milliseconds}")
+	private String jwtExpirationDate;
+	
+	public String generateToken(Authentication authentication) {
+		
+		String username = authentication.g
+	}
+}

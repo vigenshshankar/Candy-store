@@ -1,0 +1,14 @@
+package com.cg.onlinesweetmart.aspect;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class LoggerAspect {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(LoggerAspect.class);
+	
+	public void logMethodCall() {
+		LOGGER.info("method called");
+	}
+	
+}

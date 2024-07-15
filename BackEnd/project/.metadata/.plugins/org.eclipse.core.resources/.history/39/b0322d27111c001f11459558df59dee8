@@ -1,0 +1,5 @@
+package com.cg.onlinesweetmart.aspect;
+
+public class LoggerAspect {
+
+}

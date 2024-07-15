@@ -1,0 +1,16 @@
+package com.cg.onlinesweetmart.service;
+
+import java.util.List;
+
+import com.cg.onlinesweetmart.entity.Cart;
+
+public interface CartService {
+
+	/**
+	 * Retrieve all carts from the repository.
+	 *
+	 * @return List of all carts
+	 */
+	List<Cart> showAllCart();
+
+}

@@ -1,0 +1,15 @@
+package com.cg.onlinesweetmart.service;
+
+import com.cg.onlinesweetmart.entity.Category;
+
+public interface CategoryService {
+
+	/**
+	 * Add a new category to the repository.
+	 *
+	 * @param category the category to be added
+	 * @return the saved category
+	 */
+	Category addCategory(Category category);
+
+}
