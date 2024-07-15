@@ -1,2 +1,3 @@
 ﻿# Candy-store
-* A Group of four people Have worked in this project *
+* A Group of five people Have worked in this project *
+* 
